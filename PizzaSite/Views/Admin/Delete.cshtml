@@ -1,0 +1,74 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model PizzasModel
+
+<div class="text-center container">
+    <h1>Delete a pizza!</h1>
+    <form method="post" asp-action="DeletePOST" class="mx-auto mt-5 mb-5 px-5 pt-5 pb-5 rounded-5 alert-light col-4">
+
+        @*<div asp-validation-summary="All"></div>*@
+
+        <input asp-for="Id" hidden />
+
+        <input type="text" asp-for="PizzaName" disabled
+               placeholder="Name your pizza" />
+        <br />
+        <span asp-validation-for="PizzaName" class="text-danger"></span>
+
+        <br />
+
+
+        <input type="text" asp-for="ImageTitle" disabled
+               placeholder="Name your pizza" />
+        <br />
+        <span asp-validation-for="ImageTitle" class="text-danger"></span>
+
+        <br />
+
+
+        <input type="checkbox" asp-for="TomatoSauce" disabled
+               placeholder="Tomato Sauce" />Tomato Sauce
+        <br />
+
+        <input type="checkbox" asp-for="Cheese" disabled
+               placeholder="Cheese" />Cheese
+        <br />
+
+        <input type="checkbox" asp-for="Peperoni" disabled
+               placeholder="Peperoni" />Peperoni
+        <br />
+
+        <input type="checkbox" asp-for="Mushroom" disabled
+               placeholder="Mushroom" />Mushroom
+        <br />
+
+        <input type="checkbox" asp-for="Pineapple" disabled
+               placeholder="Pineapple" />Pineapple
+        <br />
+
+        <input type="checkbox" asp-for="Ham" disabled
+               placeholder="Ham" />Ham
+        <br />
+
+        <input type="checkbox" asp-for="Beef" disabled
+               placeholder="Beef" />Beef
+        <br />
+
+        <button class="btn btn-danger alert-primary mt-1 purpleButton whiteText" type="submit">Delete</button>
+        <a asp-controller="Admin" asp-action="List" class="btn btn-secondary" style="width:150px">
+            Back to List
+        </a>
+    </form>
+
+</div>
+
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}
