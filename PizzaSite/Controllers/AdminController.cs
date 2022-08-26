@@ -30,17 +30,63 @@ namespace PizzaSite.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(PizzasModel obj)
         {
-            if (obj.Beef == obj.Pineapple)
+            //if (obj.Beef == obj.Pineapple)
+            //{
+            //    ModelState.AddModelError("CustomError", "You can't add beef and pineapple at the same time.");
+            //}
+
+
+
+            obj.FinalPrice = obj.BasePrice;
+
+            if (obj.TomatoSauce == true)
             {
-                ModelState.AddModelError("CustomError", "You can't add beef and pineapple at the same time.");
+                obj.FinalPrice = obj.FinalPrice + 2;
             }
+
+            if (obj.Cheese == true)
+            {
+                obj.FinalPrice = obj.FinalPrice + 2;
+            }
+
+            if (obj.Peperoni == true)
+            {
+                obj.FinalPrice = obj.FinalPrice + 2;
+            }
+
+            if (obj.Mushroom == true)
+            {
+                obj.FinalPrice = obj.FinalPrice + 2;
+            }
+
+            if (obj.Tuna == true)
+            {
+                obj.FinalPrice = obj.FinalPrice + 2;
+            }
+
+            if (obj.Pineapple == true)
+            {
+                obj.FinalPrice = obj.FinalPrice + 2;
+            }
+
+            if (obj.Ham == true)
+            {
+                obj.FinalPrice = obj.FinalPrice + 2;
+            }
+
+            if (obj.Beef == true)
+            {
+                obj.FinalPrice = obj.FinalPrice + 2;
+            }
+
 
 
             if (ModelState.IsValid)
             {
                 _db.Pizzas.Add(obj);
                 _db.SaveChanges();
-                return RedirectToAction("Pizza", "Home");
+                TempData["success"] = "Pizza created successfully";
+                return RedirectToAction("Index");
             }
 
             return View(obj);
@@ -59,7 +105,7 @@ namespace PizzaSite.Controllers
         //Edit GET
         public IActionResult Edit(int? id)
         {
-            if(id== null || id ==0)
+            if (id == null || id == 0)
             {
                 return NotFound();
             }
@@ -68,7 +114,7 @@ namespace PizzaSite.Controllers
             //var PizzasModelFromDbFirst = _db.Pizzas.FirstOrDefault(u=>u.Id == id);
             //var PizzasModelFromDbSingle = _db.Pizzas.SingleOrDefault(u => u.Id == id);
 
-            if(PizzasModelFromDb == null)
+            if (PizzasModelFromDb == null)
             {
                 return NotFound();
             }
@@ -83,17 +129,18 @@ namespace PizzaSite.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Edit(PizzasModel obj)
         {
-            if (obj.Beef == obj.Pineapple)
-            {
-                ModelState.AddModelError("CustomError", "You can't add beef and pineapple at the same time.");
-            }
+            //if (obj.Beef == obj.Pineapple)
+            //{
+            //    ModelState.AddModelError("CustomError", "You can't add beef and pineapple at the same time.");
+            //}
 
 
             if (ModelState.IsValid)
             {
                 _db.Pizzas.Update(obj);
                 _db.SaveChanges();
-                return RedirectToAction("Pizza", "Home");
+                TempData["success"] = "Pizza updated successfully";
+                return RedirectToAction("Index");
             }
 
             return View(obj);
@@ -135,9 +182,10 @@ namespace PizzaSite.Controllers
             }
 
 
-                _db.Pizzas.Remove(obj);
-                _db.SaveChanges();
-                return RedirectToAction("Pizza", "Home");
+            _db.Pizzas.Remove(obj);
+            _db.SaveChanges();
+            TempData["success"] = "Pizza deleted successfully";
+            return RedirectToAction("Index");
 
 
         }

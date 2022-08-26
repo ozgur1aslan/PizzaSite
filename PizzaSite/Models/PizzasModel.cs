@@ -9,8 +9,8 @@ namespace PizzaSite.Models
         public int Id { get; set; }
         [DisplayName("Image Title")]
         //[Range(1,100,ErrorMessage ="Range must be  between 1 and 100")]
-        public string ImageTitle { get; set; }
-        public string PizzaName { get; set; }
+        public string? ImageTitle { get; set; }
+        public string? PizzaName { get; set; }
         public float BasePrice { get; set; } = 2;
         public bool TomatoSauce { get; set; }
         public bool Cheese { get; set; }

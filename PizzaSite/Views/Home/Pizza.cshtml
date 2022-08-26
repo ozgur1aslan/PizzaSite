@@ -87,7 +87,8 @@
                     <a class="pizza-img" asp-area="" asp-controller="Checkout" asp-action="Checkout"
                    asp-route-ImageTitle="@pizza.ImageTitle"
                    asp-route-PizzaPrice="@pizza.FinalPrice"
-                   asp-route-PizzaName="@pizza.PizzaName">
+                   asp-route-PizzaName="@pizza.PizzaName"
+                   asp-route-id="@pizza.Id">
                         <img src="@imagePath" class="w-100" asp-append-version="true" />
                     </a>
                     <br />
