@@ -25,6 +25,13 @@ namespace PizzaSite.Controllers
             return View(objPizzasList);
         }
 
+
+        public IActionResult Drink()
+        {
+            IEnumerable<DrinksModel> objDrinksList = _db.Drinks;
+            return View(objDrinksList);
+        }
+
         public IActionResult Privacy()
         {
             return View();

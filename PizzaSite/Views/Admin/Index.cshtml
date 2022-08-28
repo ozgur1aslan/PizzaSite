@@ -4,6 +4,13 @@
 @{
 }
 
+@*@if (TempData["success"] != null)
+{
+    <h2>@TempData["success"]</h2>
+}*@
+
+@*<partial name="_Notification" />*@
+
 <div class="text-center">
     <div class="mainText">
         <h1 class="display-4 text-capitalize text-black">Admin Menu</h1>

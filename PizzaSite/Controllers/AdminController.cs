@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using PizzaSite.Data;
 using PizzaSite.Models;
 
@@ -14,18 +15,21 @@ namespace PizzaSite.Controllers
             _db = db;
         }
 
+        [Authorize(Roles = "Admin")]
         public IActionResult Index()
         {
             return View();
         }
 
         //Create GET
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             return View();
         }
 
         //Create POST
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create(PizzasModel obj)
@@ -94,6 +98,7 @@ namespace PizzaSite.Controllers
 
 
 
+        [Authorize(Roles = "Admin")]
         public IActionResult List()
         {
             IEnumerable<PizzasModel> objPizzasModelList = _db.Pizzas;
@@ -103,6 +108,7 @@ namespace PizzaSite.Controllers
 
 
         //Edit GET
+        [Authorize(Roles = "Admin")]
         public IActionResult Edit(int? id)
         {
             if (id == null || id == 0)
@@ -124,7 +130,7 @@ namespace PizzaSite.Controllers
 
 
         //Edit POST
-
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Edit(PizzasModel obj)
@@ -149,6 +155,7 @@ namespace PizzaSite.Controllers
 
 
         //Delete GET
+        [Authorize(Roles = "Admin")]
         public IActionResult Delete(int? id)
         {
             if (id == null || id == 0)
@@ -170,7 +177,7 @@ namespace PizzaSite.Controllers
 
 
         //Delete POST
-
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult DeletePOST(int? id)

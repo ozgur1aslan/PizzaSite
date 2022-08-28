@@ -1,0 +1,24 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model SuggestionModel
+
+<div class="text-center container">
+    <h1>Suggesstion Form</h1>
+    <form method="post" class="mx-auto mt-5 mb-5 px-5 pt-5 pb-5 rounded-5 alert-light col-4">
+
+        <input asp-for="Id" hidden />
+        <input type="text" asp-for="content"
+               placeholder="Enter your suggestion" />
+        <br />
+
+
+
+        <button class="btn alert-primary mt-1 purpleButton whiteText" type="submit">Send</button>
+    </form>
+
+
+</div>

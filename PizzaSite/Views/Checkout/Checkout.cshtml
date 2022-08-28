@@ -22,6 +22,23 @@
         <p>Your order for pizza named @Model.PizzaName is ready!</p>
         <p>Total price is: @Model.FinalPrice</p>
         <br />
-        <a class="btn alert-primary mt-1 mx-auto purpleButton whiteText" asp-area="" asp-controller="Checkout" asp-action="ThankYou">Confirm Order</a>
+        @*<a class="btn alert-primary mt-1 mx-auto purpleButton whiteText" asp-area="" asp-controller="Checkout" asp-action="ThankYou">Confirm Order</a>*@
+
+
+        <form method="post" class="mx-auto mt-5 mb-5 px-5 pt-5 pb-5 rounded-5 alert-light col-4">
+
+
+            <input asp-for="Id" hidden />
+
+            <input type="text" asp-for="PizzaName" hidden />
+            <input type="int" asp-for="FinalPrice" hidden />
+            <br />         
+
+            <button class="btn btn-danger alert-primary mt-1 purpleButton whiteText" type="submit">Order</button>
+            
+        </form>
+
+
     </div>
 </div>
+

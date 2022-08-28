@@ -11,7 +11,7 @@ namespace PizzaSite.Models
         //[Range(1,100,ErrorMessage ="Range must be  between 1 and 100")]
         public string? ImageTitle { get; set; }
         public string? PizzaName { get; set; }
-        public float BasePrice { get; set; } = 2;
+        public int BasePrice { get; set; } = 2;
         public bool TomatoSauce { get; set; }
         public bool Cheese { get; set; }
         public bool Peperoni { get; set; }
@@ -20,6 +20,6 @@ namespace PizzaSite.Models
         public bool Pineapple { get; set; }
         public bool Ham { get; set; }
         public bool Beef { get; set; }
-        public float FinalPrice { get; set; }
+        public int FinalPrice { get; set; }
     }
 }
