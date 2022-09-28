@@ -7,13 +7,18 @@
 
 <div class="text-center">
     <div class="mainText">
-        <h1 class="display-4 text-capitalize text-black">User Menu</h1>
-        <h2 class="mainSubtitle">Here are some user options</h2>
+        <h1 class="display-4 text-capitalize fw-bold purpleText">User Menu</h1>
+        <h2 class="mainSubtitle purpleText">Here are some user options</h2>
     </div>
-    <img class="mainImage" src="~/images/PizzaTime.jpg" />
+    <img class="mainImage" style="height:300px; width:512px" src="~/images/User.jpg" />
     <br />
-    <a class="btn btn-primary mt-1 purpleButton whiteText" asp-area="" asp-controller="User" asp-action="PizzaList">List your Pizza orders</a>
+    <a class="btn btn-primary mt-1 purpleButton whiteText" asp-area="" asp-controller="User" asp-action="PizzaOrdersList">List your Pizza Orders</a>
     <br />
-    <a class="btn btn-primary mt-1 purpleButton whiteText" asp-area="" asp-controller="User" asp-action="DrinkList">List your Drink orders</a>
+    <a class="btn btn-primary mt-1 purpleButton whiteText" asp-area="" asp-controller="User" asp-action="DrinkOrdersList">List your Drink Orders</a>
+    
+    <br /><br />
+
+    <a class="btn btn-primary mt-1 whiteText" style="float: none; background-color: mediumpurple" asp-area="" asp-controller="User" asp-action="SuggestionsList">List your Suggestions</a>
     <br />
+    <a class="btn btn-primary mt-1 whiteText" style="float: none; background-color: mediumpurple" asp-area="" asp-controller="User" asp-action="ComplaintsList">List your Complaints</a>
 </div>

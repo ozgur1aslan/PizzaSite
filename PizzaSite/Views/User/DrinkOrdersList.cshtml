@@ -10,11 +10,11 @@
 <div class="container p-3">
     <div class="row pt-4">
         <div class="col-6">
-            <h2 class="text-primary">Your Drink Orders</h2>
+            <h2 class="purpleText">Your Drink Orders</h2>
         </div>
         <div class="col-6 text-end">
-            @*<a asp-controller="Admin" asp-action="Create" class="btn btn-primary">*@
-                <i class="bi bi-plus-circle"></i> &nbsp; Create New Category
+            <a asp-controller="User" asp-action="Index" class="btn btn-primary purpleButton">
+                <i class="bi bi-plus-circle"></i> &nbsp; Back to the Menu
             </a>
         </div>
     </div>
@@ -24,12 +24,14 @@
         <thead>
             <tr>
                 <th>
+                    Date and Time
+                </th>
+                <th>
                     Drink Name
                 </th>
                 <th>
                     Price
                 </th>
-                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -37,13 +39,13 @@
             {
                 <tr>
                     <td width="50%">
+                        @obj.Date
+                    </td>
+                    <td width="50%">
                         @obj.DrinksModelDrinkName
                     </td>
                     <td width="30%">
                         @obj.DrinksModelFinalPrice
-                    </td>
-                    <td>
-                   
                     </td>
                 </tr>
             }

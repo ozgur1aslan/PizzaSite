@@ -46,6 +46,14 @@ body {
     color: white;
 }
 
+.purpleText {
+    color: mediumpurple;
+}
+
+.sandybrownText {
+    color: sandybrown;
+}
+
 .makeYourOwnDiv {
     background: sandybrown;
     margin: 0;

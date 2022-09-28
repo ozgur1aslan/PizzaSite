@@ -7,12 +7,12 @@
 @model PizzasModel
 
 <div class="text-center container">
-    <h1>Create your own pizza!</h1>
+    <h1 class="purpleText">Create your own pizza!</h1>
     <form method="post" class="mx-auto mt-5 mb-5 px-5 pt-5 pb-5 rounded-5 alert-light col-4">
 
         @*<div asp-validation-summary="All"></div>*@
 
-        <input type="text" asp-for="PizzaName"
+        <input type="text" style="accent-color: mediumpurple" asp-for="PizzaName"
                placeholder="Name your pizza" />
         <br />
         <span asp-validation-for="PizzaName" class="text-danger"></span>
@@ -20,43 +20,46 @@
         <br />
 
 
-        <input type="text" asp-for="ImageTitle"
-               placeholder="Name your pizza" />
+        <input type="text" style="accent-color: mediumpurple" asp-for="ImageTitle"
+               placeholder="Image name" />
         <br />
         <span asp-validation-for="ImageTitle" class="text-danger"></span>
 
         <br />
 
 
-        <input type="checkbox" asp-for="TomatoSauce"
+        <input type="checkbox" style="accent-color: mediumpurple" asp-for="TomatoSauce"
                placeholder="Tomato Sauce" />Tomato Sauce
         <br />
 
-        <input type="checkbox" asp-for="Cheese"
+        <input type="checkbox" style="accent-color: mediumpurple" asp-for="Cheese"
                placeholder="Cheese" />Cheese
         <br />
 
-        <input type="checkbox" asp-for="Peperoni"
+        <input type="checkbox" style="accent-color: mediumpurple" asp-for="Peperoni"
                placeholder="Peperoni" />Peperoni
         <br />
 
-        <input type="checkbox" asp-for="Mushroom"
+        <input type="checkbox" style="accent-color: mediumpurple" asp-for="Mushroom"
                placeholder="Mushroom" />Mushroom
         <br />
 
-        <input type="checkbox" asp-for="Pineapple"
+        <input type="checkbox" style="accent-color: mediumpurple" asp-for="Pineapple"
                placeholder="Pineapple" />Pineapple
         <br />
 
-        <input type="checkbox" asp-for="Ham"
+        <input type="checkbox" style="accent-color: mediumpurple" asp-for="Ham"
                placeholder="Ham" />Ham
         <br />
 
-        <input type="checkbox" asp-for="Beef"
+        <input type="checkbox" style="accent-color: mediumpurple" asp-for="Beef"
                placeholder="Beef" />Beef
         <br />
 
-        <button class="btn alert-primary mt-1 purpleButton whiteText" type="submit">Order the pizza</button>
+        <button class="btn alert-primary mt-1 purpleButton whiteText" type="submit">Create Pizza</button>
+        <a asp-controller="Admin" asp-action="Index" class="btn btn-secondary" style="width:150px">
+            Back to Menu
+        </a>
     </form>
 
 </div>

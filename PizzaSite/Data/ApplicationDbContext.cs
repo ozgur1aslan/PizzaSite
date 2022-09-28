@@ -13,7 +13,7 @@ namespace PizzaSite.Data
 
         public DbSet<PizzasModel> Pizzas { get; set; }
         public DbSet<OrderModel> Orders { get; set; }
-
+        public DbSet<CustomOrderModel> CustomOrders { get; set; }
 
         public DbSet<DrinksModel> Drinks { get; set; }
         public DbSet<DrinksOrderModel> DrinkOrders { get; set; }
@@ -23,6 +23,7 @@ namespace PizzaSite.Data
 
         public DbSet<CounterModel> Counter { get; set; }
 
+        public DbSet<AspNetUserModel> AspNetUsers { get; set; }
 
     }
 }

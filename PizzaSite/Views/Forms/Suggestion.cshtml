@@ -7,15 +7,16 @@
 @model SuggestionModel
 
 <div class="text-center container">
-    <h1>Suggesstion Form</h1>
+    <h1 class="display-4 text-capitalize purpleText fw-bold">Suggesstion Form</h1>
     <form method="post" class="mx-auto mt-5 mb-5 px-5 pt-5 pb-5 rounded-5 alert-light col-4">
 
         <input asp-for="Id" hidden />
-        <input type="text" asp-for="content"
-               placeholder="Enter your suggestion" />
+
+        <div class="form-group">
+            <textarea asp-for="Content" style="height: 200px; width: 350px; center" placeholder="Enter your complaint"></textarea>
+        </div>
+
         <br />
-
-
 
         <button class="btn alert-primary mt-1 purpleButton whiteText" type="submit">Send</button>
     </form>

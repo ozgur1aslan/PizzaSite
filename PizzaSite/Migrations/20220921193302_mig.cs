@@ -6,7 +6,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace PizzaSite.Migrations
 {
-    public partial class mis : Migration
+    public partial class mig : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -362,8 +362,7 @@ namespace PizzaSite.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Orders_AspNetUsersId",
                 table: "Orders",
-                column: "AspNetUsersId",
-                unique: true);
+                column: "AspNetUsersId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Orders_PizzasModelId",

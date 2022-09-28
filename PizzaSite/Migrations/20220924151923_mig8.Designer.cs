@@ -12,8 +12,8 @@ using PizzaSite.Data;
 namespace PizzaSite.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220828193220_mis")]
-    partial class mis
+    [Migration("20220924151923_mig8")]
+    partial class mig8
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -277,6 +277,58 @@ namespace PizzaSite.Migrations
                     b.ToTable("Counter");
                 });
 
+            modelBuilder.Entity("PizzaSite.Models.CustomOrderModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("AspNetUsersId")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<bool>("Beef")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("Cheese")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("Ham")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("Mushroom")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("Peperoni")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("Pineapple")
+                        .HasColumnType("boolean");
+
+                    b.Property<int>("PizzasModelFinalPrice")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("PizzasModelPizzaName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<bool>("TomatoSauce")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("Tuna")
+                        .HasColumnType("boolean");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AspNetUsersId");
+
+                    b.HasIndex("PizzasModelFinalPrice");
+
+                    b.ToTable("CustomOrders");
+                });
+
             modelBuilder.Entity("PizzaSite.Models.DrinksModel", b =>
                 {
                     b.Property<int>("Id")
@@ -353,8 +405,7 @@ namespace PizzaSite.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AspNetUsersId")
-                        .IsUnique();
+                    b.HasIndex("AspNetUsersId");
 
                     b.HasIndex("PizzasModelId");
 
@@ -432,6 +483,21 @@ namespace PizzaSite.Migrations
                     b.ToTable("Suggestions");
                 });
 
+            modelBuilder.Entity("PizzaSite.Models.AspNetUser", b =>
+                {
+                    b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasDiscriminator().HasValue("AspNetUser");
+                });
+
             modelBuilder.Entity("PizzaSite.Models.AspNetUsers", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
@@ -501,6 +567,25 @@ namespace PizzaSite.Migrations
                     b.Navigation("AspNetUsers");
                 });
 
+            modelBuilder.Entity("PizzaSite.Models.CustomOrderModel", b =>
+                {
+                    b.HasOne("PizzaSite.Models.AspNetUsers", "AspNetUsers")
+                        .WithMany()
+                        .HasForeignKey("AspNetUsersId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("PizzaSite.Models.PizzasModel", "PizzasModel")
+                        .WithMany()
+                        .HasForeignKey("PizzasModelFinalPrice")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AspNetUsers");
+
+                    b.Navigation("PizzasModel");
+                });
+
             modelBuilder.Entity("PizzaSite.Models.DrinksOrderModel", b =>
                 {
                     b.HasOne("PizzaSite.Models.AspNetUsers", "AspNetUsers")
@@ -523,8 +608,8 @@ namespace PizzaSite.Migrations
             modelBuilder.Entity("PizzaSite.Models.OrderModel", b =>
                 {
                     b.HasOne("PizzaSite.Models.AspNetUsers", "AspNetUsers")
-                        .WithOne("OrderModel")
-                        .HasForeignKey("PizzaSite.Models.OrderModel", "AspNetUsersId")
+                        .WithMany()
+                        .HasForeignKey("AspNetUsersId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -548,12 +633,6 @@ namespace PizzaSite.Migrations
                         .IsRequired();
 
                     b.Navigation("AspNetUsers");
-                });
-
-            modelBuilder.Entity("PizzaSite.Models.AspNetUsers", b =>
-                {
-                    b.Navigation("OrderModel")
-                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

@@ -1,0 +1,50 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model DrinksModel
+
+<div class="text-center container">
+    <h1 class="purpleText">Add a drink!</h1>
+    <form method="post" class="mx-auto mt-5 mb-5 px-5 pt-5 pb-5 rounded-5 alert-light col-4">
+
+        @*<div asp-validation-summary="All"></div>*@
+
+        <input type="text" style="accent-color: mediumpurple" asp-for="DrinkName"
+               placeholder="Name the drink" />
+        <br />
+        <span asp-validation-for="DrinkName" class="text-danger"></span>
+        
+        <br />
+
+        <input type="text" style="accent-color: mediumpurple" asp-for="ImageTitle"
+               placeholder="Image name" />
+        <br />
+        <span asp-validation-for="ImageTitle" class="text-danger"></span>
+
+        <br />
+
+        <input type="text" style="accent-color: mediumpurple" asp-for="FinalPrice"
+               placeholder="Price" />
+        <br />
+        <span asp-validation-for="FinalPrice" class="text-danger"></span>
+
+        <br />
+
+
+        <button class="btn alert-primary mt-1 purpleButton whiteText" type="submit">Add Drink</button>
+        <a asp-controller="Admin" asp-action="Index" class="btn btn-secondary" style="width:150px">
+            Back to Menu
+        </a>
+    </form>
+
+</div>
+
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

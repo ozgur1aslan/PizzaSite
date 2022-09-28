@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PizzaSite.Models
 {
-    public class OrderModel
+    public class CustomOrderModel
     {
         [Key]
         //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -24,15 +24,17 @@ namespace PizzaSite.Models
 
         public int PizzasModelFinalPrice { get; set; }
         [ForeignKey("PizzasModelFinalPrice")]
-
-        public int PizzasModelId { get; set; }
-        [ForeignKey("PizzasModelId")]
         public virtual PizzasModel PizzasModel { get; set; }
 
+        public bool TomatoSauce { get; set; }
+        public bool Cheese { get; set; }
+        public bool Peperoni { get; set; }
+        public bool Mushroom { get; set; }
+        public bool Tuna { get; set; }
+        public bool Pineapple { get; set; }
+        public bool Ham { get; set; }
+        public bool Beef { get; set; }
+
     }
 
-    public class AspNetUsers : IdentityUser
-    {
-        //public virtual OrderModel OrderModel { get; set; }
-    }
 }

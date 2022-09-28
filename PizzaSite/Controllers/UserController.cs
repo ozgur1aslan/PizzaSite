@@ -2,7 +2,11 @@
 using Microsoft.AspNetCore.Mvc;
 using PizzaSite.Data;
 using PizzaSite.Models;
+using System.Dynamic;
 using System.Security.Claims;
+using System.Data;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace PizzaSite.Controllers
 {
@@ -16,82 +20,56 @@ namespace PizzaSite.Controllers
             _db = db;
         }
 
+
+        //Index GET
         public IActionResult Index()
         {
             return View();
         }
 
-        public IActionResult PizzaList()
+
+        //PizzaOrdersList GET
+        public IActionResult PizzaOrdersList()
         {
-            IEnumerable<OrderModel> objOrderModelList = _db.Orders;
-            return View(objOrderModelList);
+
+            //IEnumerable<OrderModel> objOrderModelList = _db.Orders;
+            //IEnumerable<CustomOrderModel> objCustomOrderModelList = _db.CustomOrders;
+
+            IEnumerable<OrderModel> objOrderModelList = _db.Orders.Where(x => x.AspNetUsersId == User.FindFirstValue(ClaimTypes.NameIdentifier));
+            IEnumerable<CustomOrderModel> objCustomOrderModelList = _db.CustomOrders.Where(x => x.AspNetUsersId == User.FindFirstValue(ClaimTypes.NameIdentifier));
+            
+
+            dynamic mymodel = new ExpandoObject();
+            mymodel.Orders = objOrderModelList;
+            mymodel.CustomOrders = objCustomOrderModelList;
+
+            
+            return View(mymodel);
         }
 
 
 
-        public IActionResult DrinkList()
+        //DrinkOrdersList GET
+        public IActionResult DrinkOrdersList()
         {
-            IEnumerable<DrinksOrderModel> objDrinksOrderModelList = _db.DrinkOrders;
+            IEnumerable<DrinksOrderModel> objDrinksOrderModelList = _db.DrinkOrders.Where(x => x.AspNetUsersId == User.FindFirstValue(ClaimTypes.NameIdentifier));
             return View(objDrinksOrderModelList);
         }
 
 
-
-        //Complaint GET
-        public IActionResult Complaint()
+        //SuggestionsList GET
+        public IActionResult SuggestionsList()
         {
-
-            return View();
+            IEnumerable<SuggestionModel> objSuggestionModelList = _db.Suggestions.Where(x => x.AspNetUsersId == User.FindFirstValue(ClaimTypes.NameIdentifier));
+            return View(objSuggestionModelList);
         }
 
 
-        //Complaint POST
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Complaint(ComplaintModel obj)
+        //ComplaintsList GET
+        public IActionResult ComplaintsList()
         {
-
-            obj.AspNetUsersId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-
-            if (ModelState.IsValid)
-            {
-                
-            }
-            _db.Complaints.Update(obj);
-            _db.SaveChanges();
-            TempData["success"] = "Pizza updated successfully";
-            return RedirectToAction("Index");
-
-            
-        }
-
-
-        //Suggesstion GET
-        public IActionResult Suggestion()
-        {
-
-            return View();
-        }
-
-
-        //Suggesstion POST
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Suggestion(SuggestionModel obj)
-        {
-
-            obj.AspNetUsersId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-
-            if (ModelState.IsValid)
-            {
-
-            }
-            _db.Suggestions.Update(obj);
-            _db.SaveChanges();
-            TempData["success"] = "Pizza updated successfully";
-            return RedirectToAction("Index");
-
-
+            IEnumerable<ComplaintModel> objComplaintModelList = _db.Complaints.Where(x => x.AspNetUsersId == User.FindFirstValue(ClaimTypes.NameIdentifier));
+            return View(objComplaintModelList);
         }
 
     }

@@ -4,10 +4,19 @@
 
 <div class="text-center">
     <div class="mainText">
-        <h1 class="display-4 text-capitalize text-black">Welcome to Razor Pizzas</h1>
-        <h2 class="mainSubtitle">Razor pizzas are the best ones out there!</h2>
+        <h1 class="display-4 text-capitalize fw-bold  purpleText">Welcome to Razor Pizzas</h1>
+        <h2 class="mainSubtitle purpleText">Razor pizzas are the best ones out there!</h2>
     </div>
-    <img class="mainImage" src="~/images/PizzaTime.jpg" />
+    <img class="mainImage" style="height:470px; width:626px" src="~/images/PizzaShop.jpg" />
     <br />
-    <h1>Please register our site to make orders</h1>
+
+    @if (User.Identity.IsAuthenticated)
+    {
+        <a class="btn btn-primary" style="float: none; background-color: mediumpurple" asp-area="" asp-controller="Home" asp-action="Pizza">See Our Pizzas</a>
+        <a class="btn btn-primary" style="float: none; background-color: mediumpurple" asp-area="" asp-controller="Home" asp-action="Drink">See Our Drinks</a>
+    }
+    else
+    {
+        <h1>Please register or login our site to make orders</h1>
+    }
 </div>

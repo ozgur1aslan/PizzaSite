@@ -13,12 +13,19 @@
 
 <div class="text-center">
     <div class="mainText">
-        <h1 class="display-4 text-capitalize text-black">Admin Menu</h1>
-        <h2 class="mainSubtitle">Here are some admin options</h2>
+        <h1 class="display-4 text-capitalize fw-bold purpleText">Admin Menu</h1>
+        <h2 class="mainSubtitle purpleText">Here are some admin options</h2>
     </div>
-    <img class="mainImage" src="~/images/PizzaTime.jpg" />
+    <img class="mainImage" style="height:362px; width:512px" src="~/images/Admin.jpg" />
+
     <br />
-    <a class="btn btn-primary mt-1 purpleButton whiteText" asp-area="" asp-controller="Admin" asp-action="Create">Add a Pizza</a>
+    <a class="btn btn-primary mt-1 whiteText" style="float: none; background-color: mediumpurple" asp-area="" asp-controller="Admin" asp-action="CreatePizza">Add a Pizza</a>
     <br />
-    <a class="btn btn-primary mt-1 purpleButton whiteText" asp-area="" asp-controller="Admin" asp-action="List">Edit or delete a Pizza</a>
+    <a class="btn btn-primary mt-1 whiteText" style="float: none; background-color: mediumpurple" asp-area="" asp-controller="Admin" asp-action="PizzaList">Edit or delete a Pizza</a>
+
+    <br /><br />
+
+    <a class="btn btn-primary mt-1 whiteText" style="float: none; background-color: mediumpurple" asp-area="" asp-controller="Admin" asp-action="CreateDrink">Add a Drink</a>
+    <br />
+    <a class="btn btn-primary mt-1 whiteText" style="float: none; background-color: mediumpurple" asp-area="" asp-controller="Admin" asp-action="DrinkList">Edit or delete a Drink</a>
 </div>

@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using PizzaSite.Data;
@@ -11,9 +12,10 @@ using PizzaSite.Data;
 namespace PizzaSite.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220921193302_mig")]
+    partial class mig
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -240,11 +242,8 @@ namespace PizzaSite.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("Content")
+                    b.Property<string>("content")
                         .HasColumnType("text");
-
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
 
@@ -276,61 +275,6 @@ namespace PizzaSite.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Counter");
-                });
-
-            modelBuilder.Entity("PizzaSite.Models.CustomOrderModel", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("AspNetUsersId")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<bool>("Beef")
-                        .HasColumnType("boolean");
-
-                    b.Property<bool>("Cheese")
-                        .HasColumnType("boolean");
-
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<bool>("Ham")
-                        .HasColumnType("boolean");
-
-                    b.Property<bool>("Mushroom")
-                        .HasColumnType("boolean");
-
-                    b.Property<bool>("Peperoni")
-                        .HasColumnType("boolean");
-
-                    b.Property<bool>("Pineapple")
-                        .HasColumnType("boolean");
-
-                    b.Property<int>("PizzasModelFinalPrice")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("PizzasModelPizzaName")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<bool>("TomatoSauce")
-                        .HasColumnType("boolean");
-
-                    b.Property<bool>("Tuna")
-                        .HasColumnType("boolean");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AspNetUsersId");
-
-                    b.HasIndex("PizzasModelFinalPrice");
-
-                    b.ToTable("CustomOrders");
                 });
 
             modelBuilder.Entity("PizzaSite.Models.DrinksModel", b =>
@@ -367,9 +311,6 @@ namespace PizzaSite.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("timestamp with time zone");
-
                     b.Property<string>("DrinksModelDrinkName")
                         .HasColumnType("text");
 
@@ -399,9 +340,6 @@ namespace PizzaSite.Migrations
                     b.Property<string>("AspNetUsersId")
                         .IsRequired()
                         .HasColumnType("text");
-
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("timestamp with time zone");
 
                     b.Property<int>("PizzasModelFinalPrice")
                         .HasColumnType("integer");
@@ -483,32 +421,14 @@ namespace PizzaSite.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("Content")
+                    b.Property<string>("content")
                         .HasColumnType("text");
-
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
 
                     b.HasIndex("AspNetUsersId");
 
                     b.ToTable("Suggestions");
-                });
-
-            modelBuilder.Entity("PizzaSite.Models.AspNetUserModel", b =>
-                {
-                    b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.HasDiscriminator().HasValue("AspNetUserModel");
                 });
 
             modelBuilder.Entity("PizzaSite.Models.AspNetUsers", b =>
@@ -578,25 +498,6 @@ namespace PizzaSite.Migrations
                         .IsRequired();
 
                     b.Navigation("AspNetUsers");
-                });
-
-            modelBuilder.Entity("PizzaSite.Models.CustomOrderModel", b =>
-                {
-                    b.HasOne("PizzaSite.Models.AspNetUsers", "AspNetUsers")
-                        .WithMany()
-                        .HasForeignKey("AspNetUsersId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("PizzaSite.Models.PizzasModel", "PizzasModel")
-                        .WithMany()
-                        .HasForeignKey("PizzasModelFinalPrice")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("AspNetUsers");
-
-                    b.Navigation("PizzasModel");
                 });
 
             modelBuilder.Entity("PizzaSite.Models.DrinksOrderModel", b =>

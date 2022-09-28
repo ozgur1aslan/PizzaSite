@@ -1,0 +1,93 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model dynamic
+
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="purpleText">Your Pizza Orders</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="User" asp-action="Index" class="btn btn-primary purpleButton">
+                <i class="bi bi-plus-circle"></i> &nbsp; Back to the Menu
+            </a>
+        </div>
+    </div>
+    <br /><br />
+
+    <table class="table table-bordered table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>
+                    Date and Time
+                </th>
+                <th>
+                    Pizza Name
+                </th>
+                <th>
+                    Price
+                </th>                
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (OrderModel obj in Model.Orders)
+            {
+                <tr>
+                    <td width="50%">
+                        @obj.Date
+                    </td>
+                    <td width="50%">
+                        @obj.PizzasModelPizzaName
+                    </td>
+                    <td width="30%">
+                        @obj.PizzasModelFinalPrice
+                    </td>                    
+                </tr>
+            }
+        </tbody>
+
+    </table>
+
+    <br /><br />
+
+    <h2 class="purpleText">Your Custom Pizza Orders</h2>
+    <br />
+
+    <table class="table table-bordered table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>
+                    Date and Time
+                </th>
+                <th>
+                    Pizza Name
+                </th>
+                <th>
+                    Price
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (CustomOrderModel obj in Model.CustomOrders)
+            {
+                <tr>
+                    <td width="50%">
+                        @obj.Date
+                    </td>
+                    <td width="50%">
+                        @obj.PizzasModelPizzaName
+                    </td>
+                    <td width="30%">
+                        @obj.PizzasModelFinalPrice
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+</div>

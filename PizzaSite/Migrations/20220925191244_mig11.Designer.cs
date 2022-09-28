@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using PizzaSite.Data;
@@ -11,9 +12,10 @@ using PizzaSite.Data;
 namespace PizzaSite.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220925191244_mig11")]
+    partial class mig11
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -240,10 +242,10 @@ namespace PizzaSite.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("Content")
+                    b.Property<string>("content")
                         .HasColumnType("text");
 
-                    b.Property<DateTime>("Date")
+                    b.Property<DateTime>("date")
                         .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
@@ -296,9 +298,6 @@ namespace PizzaSite.Migrations
                     b.Property<bool>("Cheese")
                         .HasColumnType("boolean");
 
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("timestamp with time zone");
-
                     b.Property<bool>("Ham")
                         .HasColumnType("boolean");
 
@@ -323,6 +322,9 @@ namespace PizzaSite.Migrations
 
                     b.Property<bool>("Tuna")
                         .HasColumnType("boolean");
+
+                    b.Property<DateTime>("date")
+                        .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
 
@@ -367,9 +369,6 @@ namespace PizzaSite.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("timestamp with time zone");
-
                     b.Property<string>("DrinksModelDrinkName")
                         .HasColumnType("text");
 
@@ -378,6 +377,9 @@ namespace PizzaSite.Migrations
 
                     b.Property<int>("DrinksModelId")
                         .HasColumnType("integer");
+
+                    b.Property<DateTime>("date")
+                        .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
 
@@ -400,9 +402,6 @@ namespace PizzaSite.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("timestamp with time zone");
-
                     b.Property<int>("PizzasModelFinalPrice")
                         .HasColumnType("integer");
 
@@ -412,6 +411,9 @@ namespace PizzaSite.Migrations
                     b.Property<string>("PizzasModelPizzaName")
                         .IsRequired()
                         .HasColumnType("text");
+
+                    b.Property<DateTime>("date")
+                        .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
 
@@ -483,10 +485,10 @@ namespace PizzaSite.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("Content")
+                    b.Property<string>("content")
                         .HasColumnType("text");
 
-                    b.Property<DateTime>("Date")
+                    b.Property<DateTime>("date")
                         .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");

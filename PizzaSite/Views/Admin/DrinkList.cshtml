@@ -4,7 +4,7 @@
 @{
 }
 
-@model IEnumerable<PizzasModel>
+@model IEnumerable<DrinksModel>
 
 @*<h1>Index Category</h1>
 
@@ -17,11 +17,11 @@
 <div class="container p-3">
     <div class="row pt-4">
         <div class="col-6">
-            <h2 class="text-primary">Category List</h2>
+            <h1 class="purpleText">Drink List</h1>
         </div>
         <div class="col-6 text-end">
-            <a asp-controller="Admin" asp-action="Create" class="btn btn-primary">
-                <i class="bi bi-plus-circle"></i> &nbsp; Create New Category
+            <a asp-controller="Admin" asp-action="CreateDrink" class="btn btn-primary" style="float: none; background-color: mediumpurple">
+                <i class="bi bi-plus-circle"></i> &nbsp; Add New Drink
             </a>
         </div>
     </div>
@@ -30,11 +30,11 @@
     <table class="table table-bordered table-striped" style="width:100%">
         <thead>
             <tr>
-                <th>
-                    Pizza Name
+                <th class="purpleText">
+                    Drink Name
                 </th>
-                <th>
-                    Image Name
+                <th class="purpleText">
+                    Price
                 </th>
                 <th></th>
             </tr>
@@ -44,17 +44,17 @@
             {
                 <tr>
                     <td width="50%">
-                        @obj.PizzaName
+                        @obj.DrinkName
                     </td>
                     <td width="30%">
-                        @obj.ImageTitle
+                        @obj.FinalPrice
                     </td>
                     <td>
                         <div class="w-75 btn-group" role="group">
-                            <a asp-controller="Admin" asp-action="Edit" asp-route-id="@obj.Id"
-                           class="btn btn-primary mx-2"> <i class="bi bi-pencil-square"></i>Edit</a>
-                            <a asp-controller="Admin" asp-action="Delete" asp-route-id="@obj.Id"
-                           class="btn btn-primary mx-2"> <i class="bi bi-pencil-square"></i>Delete</a>
+                            <a asp-controller="Admin" asp-action="EditDrink" asp-route-id="@obj.Id"
+                           class="btn btn-primary mx-2" style="float: none; background-color: mediumpurple"> <i class="bi bi-pencil-square"></i>Edit</a>
+                            <a asp-controller="Admin" asp-action="DeleteDrink" asp-route-id="@obj.Id"
+                           class="btn btn-primary mx-2" style="float: none; background-color: mediumpurple"> <i class="bi bi-pencil-square"></i>Delete</a>
                             @*<a asp-controller="Admin" asp-action="Delete" asp-route-id="@obj.Id"
                            class="btn btn-danger mx-2"> <i class="bi bi-trash-fill"></i> Delete</a>*@
                         </div>

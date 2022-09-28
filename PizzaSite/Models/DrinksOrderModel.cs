@@ -17,6 +17,7 @@ namespace PizzaSite.Models
         public virtual AspNetUsers AspNetUsers { get; set; }
 
 
+        public DateTime Date { get; set; }
 
 
         public string? DrinksModelDrinkName { get; set; }
