@@ -20,10 +20,28 @@
         <br />
 
 
-        <input type="text" style="accent-color: mediumpurple" asp-for="ImageTitle"
-               placeholder="Image name" />
+        @*<input type="text" style="accent-color: mediumpurple" asp-for="ImageTitle"
+        placeholder="Image name" />
         <br />
         <span asp-validation-for="ImageTitle" class="text-danger"></span>
+
+        <br />*@
+
+        @*<label for="ImageTitle" class="text-capitalize fw-bold purpleText">ImageTitle</label>*@
+
+        <select name="ImageTitle" class="form-control">
+            <option value="" disabled selected>Select the pizza's image</option>
+            <option value="Bolognese">Bolognese</option>
+            <option value="Carbonara">Carbonara</option>
+            <option value="Create">Custom</option>
+            <option value="Hawaiian">Hawaiian</option>
+            <option value="Margerita">Margerita</option>
+            <option value="MeatFeast">MeatFeast</option>
+            <option value="Mushroom">Mushroom</option>
+            <option value="Pepperoni">Pepperoni</option>
+            <option value="Seafood">Seafood</option>
+            <option value="Vegetarian">Vegetarian</option>
+        </select>
 
         <br />
 
@@ -69,4 +87,4 @@
     @{
         <partial name="_ValidationScriptsPartial" />
     }
-}
+    }
